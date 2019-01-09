@@ -1,0 +1,3 @@
+# shopify-merchant-inventory-app
+
+In progress...
