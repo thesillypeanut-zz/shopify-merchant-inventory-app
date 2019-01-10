@@ -12,6 +12,8 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
     
     var collections: [Collection]?
     
+    fileprivate let cellId =  "cellId"
+    
     func fetchCollections() {
         APIService.sharedInstance.fetchCollections { (collections: [Collection]) in
             
@@ -26,14 +28,14 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
         
         fetchCollections()
         
-        navigationItem.title = "Home"
+        navigationItem.title = "Collections"
         navigationController?.navigationBar.isTranslucent = false
         
         collectionView?.backgroundColor = UIColor.white
         //collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
         
-        collectionView?.register(CollectionCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView?.register(CollectionCell.self, forCellWithReuseIdentifier: cellId)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,7 +43,7 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! CollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CollectionCell
         
         cell.collection = collections?[indexPath.item]
         
@@ -58,6 +60,16 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let layout = UICollectionViewFlowLayout()
+        let collectionDetailsController = CollectionDetailsController(collectionViewLayout: layout)
+        
+        guard let collection = collections?[indexPath.item] else { return }
+        
+        collectionDetailsController.collection = collection
+        navigationController?.pushViewController(collectionDetailsController, animated: true)
     }
     
 }

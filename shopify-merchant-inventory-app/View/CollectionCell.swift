@@ -35,7 +35,7 @@ class CollectionCell: BaseCell {
     let thumbnailImageView: CustomImageView = {
         let imageView = CustomImageView()
         //imageView.backgroundColor = UIColor.blue
-        imageView.image = UIImage(named: "example-image")
+        imageView.image = UIImage(named: "SAMPLEIMAGE")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -45,7 +45,7 @@ class CollectionCell: BaseCell {
         let label = UILabel()
         //label.backgroundColor = UIColor.purple
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Taylor Swift - Blank Space"
+        label.text = "SAMPLETEXT"
         label.numberOfLines = 2
         label.textAlignment = .center
         return label
