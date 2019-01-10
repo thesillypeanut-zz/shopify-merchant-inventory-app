@@ -15,8 +15,6 @@ class CollectionCell: BaseCell {
             titleLabel.text = collection?.title
             
             setupThumbnailImage()
-            
-            thumbnailImageView.image = UIImage(named: (collection?.thumbnailImageName)!)
 
             /*if let title = collection?.title {
                 let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
@@ -37,7 +35,7 @@ class CollectionCell: BaseCell {
     let thumbnailImageView: CustomImageView = {
         let imageView = CustomImageView()
         //imageView.backgroundColor = UIColor.blue
-        imageView.image = UIImage(named: " ")
+        imageView.image = UIImage(named: "example-image")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView

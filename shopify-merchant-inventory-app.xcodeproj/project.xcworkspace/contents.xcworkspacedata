@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:shopify-merchant-inventory-app.xcodeproj">
+      location = "self:/Users/SillyPeanut/Documents/ios_apps/shopify-merchant-inventory-app/shopify-merchant-inventory-app.xcodeproj">
    </FileRef>
 </Workspace>

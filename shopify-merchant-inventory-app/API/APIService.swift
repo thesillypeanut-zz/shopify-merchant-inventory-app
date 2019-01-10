@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ApiService: NSObject {
+class APIService: NSObject {
     
-    static let sharedInstance = ApiService()
+    static let sharedInstance = APIService()
     
     let baseUrl = "https://shopicruit.myshopify.com/admin"
     
@@ -28,12 +28,16 @@ class ApiService: NSObject {
             
             do {
                 if let unwrappedData = data, let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as? [String: Any], let collection_items = json["custom_collections"] as? [[String: Any]] {
+                    
                     var collections = [Collection]()
+                    
                     for item in collection_items {
                         let collection = Collection()
                         let image = item["image"] as? [String: Any]
+                        
                         collection.thumbnailImageName = image?["src"] as? String
                         collection.title = item["title"] as? String
+                        
                         collections.append(collection)
                     }
                     

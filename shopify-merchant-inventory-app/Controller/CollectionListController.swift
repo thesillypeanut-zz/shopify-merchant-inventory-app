@@ -13,7 +13,7 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
     var collections: [Collection]?
     
     func fetchCollections() {
-        ApiService.sharedInstance.fetchCollections { (collections: [Collection]) in
+        APIService.sharedInstance.fetchCollections { (collections: [Collection]) in
             
             self.collections = collections
             self.collectionView?.reloadData()
@@ -27,7 +27,7 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
         fetchCollections()
         
         navigationItem.title = "Home"
-        //navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.isTranslucent = false
         
         collectionView?.backgroundColor = UIColor.white
         //collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
