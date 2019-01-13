@@ -14,4 +14,10 @@ struct Colours {
     static let shopifyPurpleHighlighted: UIColor = UIColor(hex:"28217A")
     static let shopifyGreen: UIColor = UIColor(hex:"81C744")
     static let shopifyGreenHighlighted: UIColor = UIColor(hex:"46953E")
+    
+    static let indigo: UIColor = UIColor(hex: "5C6AC4")
+    static let indigoLight: UIColor = UIColor(hex: "B3BCF5")
+    static let indigoLighter: UIColor = UIColor(hex: "F4F5FA")
+    static let indigoDark: UIColor = UIColor(hex: "202E78")
+    static let indigoText: UIColor = UIColor(hex: "3E4155")
 }

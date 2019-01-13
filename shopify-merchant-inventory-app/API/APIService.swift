@@ -36,7 +36,7 @@ class APIService: NSObject {
                         let image = item["image"] as? [String: Any]
                         
                         collection.thumbnailImageName = image?["src"] as? String
-                        collection.title = item["title"] as? String
+                        collection.title = (item["title"] as? String)?.capitalized
                         collection.body_html = item["body_html"] as? String
                         collection.id = item["id"] as? Int64
                         

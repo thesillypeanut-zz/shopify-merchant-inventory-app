@@ -29,11 +29,14 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
         fetchCollections()
         
         navigationItem.title = "Collections"
-        navigationController?.navigationBar.isTranslucent = false
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleLabel.text = "Collections"
+        titleLabel.textColor = Colours.indigoText
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
+        navigationItem.titleView = titleLabel
         
         collectionView?.backgroundColor = UIColor.white
-        //collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
-        //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+        collectionView?.contentInset = UIEdgeInsetsMake(10, 10, 10, 10)
         
         collectionView?.register(CollectionCell.self, forCellWithReuseIdentifier: cellId)
     }
@@ -51,15 +54,7 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width)/2, height: 300)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return CGSize(width: ((view.frame.width)/2)-15, height: 300)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

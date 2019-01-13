@@ -12,49 +12,54 @@ class CollectionDetailsHeaderCell: BaseCell {
     
     var collection: Collection? {
         didSet {
+            
+            guard let collection = collection else {
+                return
+            }
+            
             setupThumbnailImage()
+            textView.centerVertically()
             
-            titleLabel.text = collection?.title
-            bodyLabel.text = collection?.body_html
+            let attributedText = NSMutableAttributedString(string: collection.title!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20), NSForegroundColorAttributeName: Colours.indigoText])
             
-            /*if let title = collection?.title {
-                let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
-                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
-             
-                if estimatedRect.size.height > 20 {
-                    titleLabelHeightConstraint?.constant = 44
-                } else {
-                    titleLabelHeightConstraint?.constant = 20
-                }
-             }*/
+            if let bodyText = collection.body_html {
+                attributedText.append(NSAttributedString(string: "\n\n\(bodyText)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12), NSForegroundColorAttributeName: Colours.indigoText]))
+            }
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            let length = attributedText.string.characters.count
+            attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: length))
+            
+            textView.attributedText = attributedText
 
         }
     }
     
     let imageView: CustomImageView = {
         let iv = CustomImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = Colours.shopifyPurple
+        iv.contentMode = .scaleAspectFit
+        iv.backgroundColor = Colours.indigoLight
         iv.layer.cornerRadius = 16
         iv.layer.masksToBounds = true
         return iv
     }()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "SAMPLETITLE"
-        label.backgroundColor = UIColor.red
-        label.font = UIFont.systemFont(ofSize: 16)
-        return label
+    let textView: UITextView = {
+        let tv = UITextView()
+        tv.isEditable = false
+        tv.backgroundColor = .clear
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.isScrollEnabled = false
+        tv.isUserInteractionEnabled = false
+        return tv
     }()
     
-    let bodyLabel: UILabel = {
-        let label = UILabel()
-        label.text = "SAMPLEBODY"
-        label.backgroundColor = UIColor.yellow
-        label.font = UIFont.systemFont(ofSize: 12)
-        return label
+    let dividerLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
+        return view
     }()
     
     func setupThumbnailImage() {
@@ -63,20 +68,18 @@ class CollectionDetailsHeaderCell: BaseCell {
         }
     }
     
-    var titleLabelHeightConstraint: NSLayoutConstraint?
-    
     override func setupViews() {
         super.setupViews()
         
         backgroundColor = UIColor.white
         
         addSubview(imageView)
-        addSubview(titleLabel)
-        addSubview(bodyLabel)
+        addSubview(textView)
+        addSubview(dividerLineView)
         
-        _ = imageView.anchor(topAnchor, left: leftAnchor, bottom: nil, right: nil, topConstant: 14, leftConstant: 14, bottomConstant: 0, rightConstant: 0, widthConstant: 200, heightConstant: 100)
-        _ = titleLabel.anchor(topAnchor, left: imageView.rightAnchor, bottom: nil, right: rightAnchor, topConstant: 14, leftConstant: 14, bottomConstant: 0, rightConstant: 14, widthConstant: 0, heightConstant: 20)
-        _ = bodyLabel.anchor(titleLabel.bottomAnchor, left: imageView.rightAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 14, bottomConstant: 0, rightConstant: 14, widthConstant: 0, heightConstant: 50)
+        _ = imageView.anchor(topAnchor, left: leftAnchor, bottom: nil, right: nil, topConstant: 14, leftConstant: 14, bottomConstant: 0, rightConstant: 0, widthConstant: 150, heightConstant: 100)
+        _ = textView.anchor(topAnchor, left: imageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 14, bottomConstant: 0, rightConstant: 14, widthConstant: 0, heightConstant: 0)
+        _ = dividerLineView.anchor(bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
     
     }
     

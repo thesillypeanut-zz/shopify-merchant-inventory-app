@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let layout = UICollectionViewFlowLayout()
         window?.rootViewController = UINavigationController(rootViewController: CollectionListController(collectionViewLayout: layout))
         
+        UINavigationBar.appearance().tintColor = Colours.indigoText
+        UINavigationBar.appearance().barTintColor = Colours.indigoLighter
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Colours.indigoText], for: .normal)
+        
         return true
     }
 

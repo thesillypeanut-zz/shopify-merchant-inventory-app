@@ -34,7 +34,7 @@ class CollectionCell: BaseCell {
     
     let thumbnailImageView: CustomImageView = {
         let imageView = CustomImageView()
-        //imageView.backgroundColor = UIColor.blue
+        imageView.backgroundColor = Colours.indigoLight
         imageView.image = UIImage(named: "SAMPLEIMAGE")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -43,11 +43,13 @@ class CollectionCell: BaseCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        //label.backgroundColor = UIColor.purple
+        label.backgroundColor = Colours.indigo
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "SAMPLETEXT"
-        label.numberOfLines = 2
+        label.font = label.font.withSize(16)
         label.textAlignment = .center
+        label.textColor = UIColor.white
+        label.clipsToBounds = true
         return label
     }()
     
@@ -57,15 +59,18 @@ class CollectionCell: BaseCell {
         }
     }
     
-    var titleLabelHeightConstraint: NSLayoutConstraint?
+    //var titleLabelHeightConstraint: NSLayoutConstraint?
     
     override func setupViews() {
         super.setupViews()
         
+        self.layer.cornerRadius = 16
+        self.layer.masksToBounds = true
+        
         addSubview(thumbnailImageView)
         addSubview(titleLabel)
         
-        titleLabelHeightConstraint = titleLabel.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 64)[3]
+        _ = titleLabel.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
         _ = thumbnailImageView.anchor(topAnchor, left: leftAnchor, bottom: titleLabel.topAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
     
