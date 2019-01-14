@@ -252,7 +252,7 @@ class ProductCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegat
         
         _ = collectionView.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 110)
         
-        _ = imageView.anchor(topAnchor, left: leftAnchor, bottom: nil, right: nil, topConstant: 14, leftConstant: 14, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 120)
+        _ = imageView.anchor(topAnchor, left: leftAnchor, bottom: nil, right: nil, topConstant: 14, leftConstant: 14, bottomConstant: 0, rightConstant: 0, widthConstant: 82, heightConstant: 120)
         
         _ = textView.anchor(topAnchor, left: imageView.rightAnchor, bottom: nil, right: rightAnchor, topConstant: 14, leftConstant: 14, bottomConstant: 14, rightConstant: 14, widthConstant: 0, heightConstant: 60)
         
