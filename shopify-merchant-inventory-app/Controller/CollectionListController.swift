@@ -36,7 +36,7 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
         navigationItem.titleView = titleLabel
         
         collectionView?.backgroundColor = UIColor.white
-        collectionView?.contentInset = UIEdgeInsetsMake(10, 10, 10, 10)
+        collectionView?.contentInset = UIEdgeInsetsMake(14, 14, 14, 14)
         
         collectionView?.register(CollectionCell.self, forCellWithReuseIdentifier: cellId)
     }
@@ -54,7 +54,7 @@ class CollectionListController: UICollectionViewController, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: ((view.frame.width)/2)-15, height: 300)
+        return CGSize(width: (view.frame.width/2)-21, height: 300)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

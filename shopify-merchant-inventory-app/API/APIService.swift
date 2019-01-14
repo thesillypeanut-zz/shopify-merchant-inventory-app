@@ -37,7 +37,7 @@ class APIService: NSObject {
                         
                         collection.thumbnailImageName = image?["src"] as? String
                         collection.title = (item["title"] as? String)?.capitalized
-                        collection.body_html = item["body_html"] as? String
+                        collection.bodyHtml = item["body_html"] as? String
                         collection.id = item["id"] as? Int64
                         
                         collections.append(collection)
@@ -117,9 +117,9 @@ class APIService: NSObject {
                             
                             product.imageName = image?["src"] as? String
                             product.title = item["title"] as? String
-                            product.body_html = item["body_html"] as? String
+                            product.bodyHtml = item["body_html"] as? String
                             product.vendor = item["vendor"] as? String
-                            product.product_type = item["productType"] as? String
+                            product.productType = item["product_type"] as? String
                             product.tags = item["tags"] as? String
                             
                             var variants = [Variant]()
@@ -129,9 +129,9 @@ class APIService: NSObject {
                             for item in variant_items {
                                 let variant = Variant()
                             
-                                variant.title = item["title"] as? String
+                                variant.title = (item["title"] as? String)?.capitalized
                                 variant.price = item["price"] as? String
-                                variant.weight = String(item["weight"] as! Float) + (item["weight_unit"] as! String)
+                                variant.weight = String(item["weight"] as! Float) + " " + (item["weight_unit"] as! String)
                             
                                 let inventoryQuantity = item["inventory_quantity"] as! Int
                                 variant.inventoryQuantity = inventoryQuantity

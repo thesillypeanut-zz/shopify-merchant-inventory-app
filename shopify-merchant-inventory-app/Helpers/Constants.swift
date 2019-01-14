@@ -9,11 +9,11 @@
 import UIKit
 
 struct Colours {
-    static let shopifyBlack: UIColor = UIColor(hex: "151C25")
-    static let shopifyPurple: UIColor = UIColor(hex:"635FC6")
-    static let shopifyPurpleHighlighted: UIColor = UIColor(hex:"28217A")
-    static let shopifyGreen: UIColor = UIColor(hex:"81C744")
-    static let shopifyGreenHighlighted: UIColor = UIColor(hex:"46953E")
+    static let green: UIColor = UIColor(hex: "50B83C")
+    static let greenLight: UIColor = UIColor(hex: "BBE5B3")
+    static let greenLighter: UIColor = UIColor(hex: "E3F1DF")
+    static let greenDark: UIColor = UIColor(hex: "108043")
+    static let greenText: UIColor = UIColor(hex: "414F3E")
     
     static let indigo: UIColor = UIColor(hex: "5C6AC4")
     static let indigoLight: UIColor = UIColor(hex: "B3BCF5")

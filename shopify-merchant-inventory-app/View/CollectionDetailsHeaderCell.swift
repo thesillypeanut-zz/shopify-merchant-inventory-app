@@ -22,7 +22,7 @@ class CollectionDetailsHeaderCell: BaseCell {
             
             let attributedText = NSMutableAttributedString(string: collection.title!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20), NSForegroundColorAttributeName: Colours.indigoText])
             
-            if let bodyText = collection.body_html {
+            if let bodyText = collection.bodyHtml {
                 attributedText.append(NSAttributedString(string: "\n\n\(bodyText)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12), NSForegroundColorAttributeName: Colours.indigoText]))
             }
             

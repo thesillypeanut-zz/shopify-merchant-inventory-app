@@ -13,7 +13,7 @@ class Collection: NSObject {
     var id: Int64?
     var thumbnailImageName: String?
     var title: String?
-    var body_html: String?
+    var bodyHtml: String?
     
 }
 

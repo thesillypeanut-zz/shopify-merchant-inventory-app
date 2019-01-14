@@ -12,11 +12,12 @@ class Product: NSObject {
     
     var imageName: String?
     var title: String?
-    var body_html: String?
+    var bodyHtml: String?
     var vendor: String?
-    var product_type: String?
+    var productType: String?
     var tags: String?
     var variants: [Variant]?
     var totalInventory: Int?
     
 }
+

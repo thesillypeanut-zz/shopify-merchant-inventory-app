@@ -12,22 +12,13 @@ class CollectionCell: BaseCell {
     
     var collection: Collection? {
         didSet {
-            titleLabel.text = collection?.title
             
+            guard let collection = collection else {
+                return
+            }
+            
+            titleLabel.text = collection.title
             setupThumbnailImage()
-
-            /*if let title = collection?.title {
-                let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
-                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
-                
-                if estimatedRect.size.height > 20 {
-                    titleLabelHeightConstraint?.constant = 44
-                } else {
-                    titleLabelHeightConstraint?.constant = 20
-                }
-            }*/
-            
             
         }
     }
@@ -58,8 +49,6 @@ class CollectionCell: BaseCell {
             thumbnailImageView.loadImageUsingUrlString(thumbnailImageUrl)
         }
     }
-    
-    //var titleLabelHeightConstraint: NSLayoutConstraint?
     
     override func setupViews() {
         super.setupViews()
