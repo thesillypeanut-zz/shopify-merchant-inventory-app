@@ -4,5 +4,5 @@ A simple inventory app where Shopify merchants can view inventory collections, p
 
 ## Main View Controllers
 
-![Collections View Controller](/Screenshots/collections.png=250x "Custom Collections List Page")
-![Collection Details Controller](/Screenshots/collection_details_1.png=250x "Collection Details Page")
+![Collections View Controller](/Screenshots/collections.png "Custom Collections List Page"){ width=50% }
+![Collection Details Controller](/Screenshots/collection_details_1.png "Collection Details Page"){ width=50% }
